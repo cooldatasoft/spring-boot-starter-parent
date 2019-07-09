@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.6.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
+        <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.cooldatasoft</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <packaging>pom</packaging>
     <version>1.0.0_2.1.6</version>
+    <packaging>pom</packaging>
 
     <description>Parent project for Cooldatasoft SpringBoot Projects</description>
     <url>https://github.com/cooldatasoft/cooldatasoft-springboot-parent</url>
-
     <licenses>
         <license>
             <name>The Apache License, Version 2.0</name>
@@ -39,7 +38,6 @@
         <developerConnection>scm:git:ssh://github.com:cooldatasoft/spring-boot-starter-parent.git</developerConnection>
         <url>http://github.com/cooldatasoft/spring-boot-starter-parent/tree/develop</url>
     </scm>
-
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -51,13 +49,346 @@
         </repository>
     </distributionManagement>
 
+    <properties>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.site.outputEncoding>UTF-8</maven.site.outputEncoding>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <!--********* Dependency Versions *********-->
+        <build-tools.groupId>com.cooldatasoft</build-tools.groupId>
+        <build-tools.artifactId>build-tools</build-tools.artifactId>
+        <build-tools.version>1.0.0</build-tools.version>
+
+        <!--********* Plugin Build status Customizations *********-->
+        <maven.javadoc.failOnError>true</maven.javadoc.failOnError>
+        <maven.findbugs.failOnError>true</maven.findbugs.failOnError>
+        <pmd.failOnViolation>true</pmd.failOnViolation>
+        <cpd.failOnViolation>true</cpd.failOnViolation>
+        <cobertura.haltOnFailure>true</cobertura.haltOnFailure>
+        <cobertura.haltOnFailure>true</cobertura.haltOnFailure>
+        <checkstyle.failOnViolation>true</checkstyle.failOnViolation>
+        <checkstyle.failsOnError>true</checkstyle.failsOnError>
+
+        <!--********* Plugin Customizations *********-->
+        <findbugs.includeTests>true</findbugs.includeTests>
+        <pmd.printFailingErrors>true</pmd.printFailingErrors>
+        <checkstyle.consoleOutput>true</checkstyle.consoleOutput>
+        <checkstyle.includeTestSourceDirectory>true</checkstyle.includeTestSourceDirectory>
+        <pmd.skipEmptyReport>false</pmd.skipEmptyReport>
+
+        <!--********* COBERTURA *********-->
+        <cobertura.totalLineRate>80</cobertura.totalLineRate>
+
+        <!--********* CheckStyle *********-->
+        <checkstyle.version>8.10.1</checkstyle.version>
+        <checkstyle.config.location>checkstyle/checkstyle-rules.xml</checkstyle.config.location>
+        <checkstyle.suppressions.location>checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.location>
+
+        <!--********* FINDBUGS *********-->
+        <maven.findbugs.detail>high</maven.findbugs.detail>
+        <maven.findbugs.xmlOutput>true</maven.findbugs.xmlOutput>
+        <maven.findbugs.threashold>Low</maven.findbugs.threashold>
+        <maven.findbugs.effort>Max</maven.findbugs.effort>
+
+        <!--********* Plugin Versions *********-->
+        <maven-checkstyle-plugin.version>3.0.0</maven-checkstyle-plugin.version>
+        <maven-pmd-plugin.version>3.10.0</maven-pmd-plugin.version>
+        <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
+        <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
+        <maven-cobertura-plugin.version>2.7</maven-cobertura-plugin.version>
+        <maven-project-info-reports-plugin.version>2.7</maven-project-info-reports-plugin.version>
+
+        <!--CPD check limit-->
+        <minimumTokens>200</minimumTokens>
+
+    </properties>
+
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${maven-checkstyle-plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>${build-tools.groupId}</groupId>
+                            <artifactId>${build-tools.artifactId}</artifactId>
+                            <version>${build-tools.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>com.puppycrawl.tools</groupId>
+                            <artifactId>checkstyle</artifactId>
+                            <version>${checkstyle.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <executions>
+                        <execution>
+                            <id>checkstyle</id>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                            <configuration>
+                                <consoleOutput>${checkstyle.consoleOutput}</consoleOutput>
+                                <failOnViolation>${checkstyle.failOnViolation}</failOnViolation>
+                                <failsOnError>${checkstyle.failsOnError}</failsOnError>
+                                <encoding>UTF-8</encoding>
+                                <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                                <outputFile>${project.build.directory}/checkstyle/result.xml</outputFile>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>${maven-pmd-plugin.version}</version>
+                    <configuration>
+                        <printFailingErrors>${pmd.printFailingErrors}</printFailingErrors>
+                        <failOnViolation>${pmd.failOnViolation}</failOnViolation>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>check</goal>
+                                <goal>cpd-check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>${build-tools.groupId}</groupId>
+                            <artifactId>${build-tools.artifactId}</artifactId>
+                            <version>${build-tools.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>${findbugs-maven-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>analyze</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <includeTests>${findbugs.includeTests}</includeTests>
+                        <failOnError>${maven.findbugs.failOnError}</failOnError>
+                        <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven-javadoc-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-javadocs</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>jar-no-fork</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jxr-plugin</artifactId>
+                    <version>${maven-jxr-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${maven-gpg-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>sign-artifacts</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>sign</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>cobertura-maven-plugin</artifactId>
+                    <version>${maven-cobertura-plugin.version}</version>
+                    <configuration>
+                        <check>
+                            <!--<branchRate>${cobertura.branchRate}</branchRate>-->
+                            <!--<lineRate>${cobertura.lineRate}</lineRate>-->
+                            <haltOnFailure>${cobertura.haltOnFailure}</haltOnFailure>
+                            <!--<totalBranchRate>99</totalBranchRate>-->
+                            <totalLineRate>${cobertura.totalLineRate}</totalLineRate>
+                            <!--<packageLineRate>99</packageLineRate>-->
+                            <!--<packageBranchRate>99</packageBranchRate>-->
+                        </check>
+                    </configuration>
+
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>clean</goal>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>${maven-release-plugin.version}</version>
+                    <configuration>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <useReleaseProfile>false</useReleaseProfile>
+                        <releaseProfiles>release</releaseProfiles>
+                        <goals>deploy</goals>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>tidy-maven-plugin</artifactId>
+                    <version>1.1.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>tidy-maven-plugin</artifactId>
+            </plugin>
         </plugins>
     </build>
 
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <configuration>
+                    <includeTestSourceDirectory>${checkstyle.includeTestSourceDirectory}</includeTestSourceDirectory>
+                    <failOnViolation>${checkstyle.failOnViolation}</failOnViolation>
+                    <failsOnError>${checkstyle.failsOnError}</failsOnError>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven-pmd-plugin.version}</version>
+                <configuration>
+                    <skipEmptyReport>${pmd.skipEmptyReport}</skipEmptyReport>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${findbugs-maven-plugin.version}</version>
+                <!--<configuration>-->
+                <!--<excludeFilterFile>findbugs/findbugs-exclude.xml</excludeFilterFile>-->
+                <!--<failOnError>true</failOnError>-->
+                <!--<findbugsXmlOutput>true</findbugsXmlOutput>-->
+                <!--<xmlOutput>true</xmlOutput>-->
+                <!--<xmlOutputDirectory>target/site</xmlOutputDirectory>-->
+                <!--</configuration>-->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${maven-jxr-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports-plugin.version}</version>
+                <configuration>
+                    <dependencyLocationsEnabled>true</dependencyLocationsEnabled>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>${maven-cobertura-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <id>cobertura-report</id>
+                        <reports>
+                            <report>clean</report>
+                            <report>cobertura</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
