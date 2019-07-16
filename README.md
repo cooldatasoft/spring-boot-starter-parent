@@ -15,11 +15,11 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
 ##### [maven-checkstyle-plugin](https://maven.apache.org/plugins/maven-checkstyle-plugin/index.html)
 
  
- Property | Default | Description
- --- | --- | ---
- checkstyle.consoleOutput | true | Prints output to console
- checkstyle.failOnViolation | true | Fails build if there are violations
- checkstyle.failsOnError | true | Fails build if there are errors
+ Property                       | Default   | Description
+ ---                            | ---       | ---
+ checkstyle.consoleOutput       | true      | Prints output to console
+ checkstyle.failOnViolation     | true      | Fails build if there are violations
+ checkstyle.failsOnError        | true      | Fails build if there are errors
  
 ##### [maven-enforcer-plugin](https://maven.apache.org/enforcer/maven-enforcer-plugin/)
 ##### [maven-failsafe-plugin](https://maven.apache.org/surefire/maven-failsafe-plugin/)
