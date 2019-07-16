@@ -50,6 +50,12 @@
         </repository>
     </distributionManagement>
 
+    <!--    <description>-->
+    <!--        This project provides a parent project for spring-boot project that has several maven plugins-->
+    <!--        configured and ready for use.-->
+    <!--    </description>-->
+
+
     <properties>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -82,11 +88,53 @@
         <pmd.printFailingErrors>true</pmd.printFailingErrors>
 
         <jacoco.line.coveredRatio>0.70</jacoco.line.coveredRatio>
+
+        <docker.image.prefix>cooldatasoft</docker.image.prefix>
     </properties>
+
+
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <!-- will be set by the release plugin upon performing
+                        mvn release:clean release:prepare release:perform -->
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+
+            <properties>
+                <gpg.keyname>XXXXQQQQ</gpg.keyname>
+                <release.username>XXXXXXXXXX</release.username>
+            </properties>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <build>
         <pluginManagement>
             <plugins>
+
                 <!-- https://maven.apache.org/plugins/maven-checkstyle-plugin/check-mojo.html -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -320,7 +368,7 @@
                                 <goal>verify</goal>
                             </goals>
                             <configuration>
-<!--                                <argLine>${failsageArgLine}</argLine>-->
+                                <!--                                <argLine>${failsageArgLine}</argLine>-->
                                 <skipTests>${skip.integration.tests}</skipTests>
                             </configuration>
                         </execution>
@@ -345,7 +393,7 @@
                     <version>3.0.0-M3</version>
                     <configuration>
                         <testFailureIgnore>true</testFailureIgnore>
-<!--                        <argLine>@{argLine} ${surefire.argLine}</argLine>-->
+                        <!--                        <argLine>@{argLine} ${surefire.argLine}</argLine>-->
                         <systemPropertyVariables>
                             <env>test</env>
                         </systemPropertyVariables>
@@ -397,9 +445,63 @@
                     </executions>
                 </plugin>
 
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>1.4.9</version>
+                    <configuration>
+                        <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.1.1</version>
+                    <executions>
+                        <execution>
+                            <id>unpack</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>unpack</goal>
+                            </goals>
+                            <configuration>
+                                <artifactItems>
+                                    <artifactItem>
+                                        <groupId>${project.groupId}</groupId>
+                                        <artifactId>${project.artifactId}</artifactId>
+                                        <version>${project.version}</version>
+                                    </artifactItem>
+                                </artifactItems>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+
             </plugins>
+
         </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+            </plugin>
+
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-dependency-plugin</artifactId>-->
+<!--            </plugin>-->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -412,10 +514,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -458,15 +556,32 @@
                 <artifactId>build-helper-maven-plugin</artifactId>
             </plugin>
             <!-- causes problem as there is no cucumber test for this parent pom project-->
+<!--            <plugin>-->
+<!--                <groupId>net.masterthought</groupId>-->
+<!--                <artifactId>maven-cucumber-reporting</artifactId>-->
+<!--            </plugin>-->
             <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
             </plugin>
         </plugins>
     </build>
 
     <reporting>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changes-plugin</artifactId>
+                <version>2.12.1</version>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>changes-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
