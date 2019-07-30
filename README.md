@@ -47,4 +47,7 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
 
 
 
+# Release
+        
+    mvn -DperformRelease=true clean deploy
         
