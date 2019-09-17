@@ -461,13 +461,12 @@
                     </configuration>
                     <executions>
                         <execution>
-                            <id>pre-unit-test</id>
+                            <id>initialize</id>
                             <goals>
                                 <goal>prepare-agent</goal>
                             </goals>
                         </execution>
                         <execution>
-                            <id>default-report</id>
                             <phase>verify</phase>
                             <goals>
                                 <goal>report</goal>
