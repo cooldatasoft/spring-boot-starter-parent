@@ -9,11 +9,11 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
         <parent>
             <groupId>com.cooldatasoft</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.1.6.RELEASE</version>
+            <version>2.1.7.RELEASE</version>
         </parent>
         
         
-##Automatically Added plugins
+##Automatically Configured plugins when added to plugins tag in pom.xml
 
 ##### [maven-checkstyle-plugin](https://maven.apache.org/plugins/maven-checkstyle-plugin/index.html)
 
