@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.org/cooldatasoft/spring-boot-starter-parent.svg?branch=develop)](https://travis-ci.org/cooldatasoft/spring-boot-starter-parent)
-
-
 # How To Use
 
 Declare this pom as the parent pom for your sprinboot project and thats almost everything you need. 
@@ -13,7 +10,7 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
         </parent>
         
         
-##Automatically Added plugins
+##Automatically Configured plugins when added to plugins tag in pom.xml
 
 ##### [maven-checkstyle-plugin](https://maven.apache.org/plugins/maven-checkstyle-plugin/index.html)
 
@@ -49,5 +46,5 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
 
 # Release
         
-    mvn -DperformRelease=true clean deploy
+    mvn -DperformRelease=true clean compile deploy
         
