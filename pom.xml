@@ -15,8 +15,8 @@
     <version>2.1.6.2.RELEASE</version>
     <packaging>pom</packaging>
 
-    <description>Parent project for Cooldatasoft SpringBoot Projects</description>
-    <url>https://github.com/cooldatasoft/cooldatasoft-springboot-parent</url>
+    <description>Parent project for SpringBoot Projects with preconfigured plugins</description>
+    <url>https://github.com/cooldatasoft/spring-boot-starter-parent</url>
     <licenses>
         <license>
             <name>The Apache License, Version 2.0</name>
@@ -38,6 +38,7 @@
         <developerConnection>scm:git:ssh://github.com:cooldatasoft/spring-boot-starter-parent.git</developerConnection>
         <url>http://github.com/cooldatasoft/spring-boot-starter-parent/tree/develop</url>
     </scm>
+
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -48,7 +49,6 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
-
 
     <properties>
 
