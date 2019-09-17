@@ -106,7 +106,7 @@
         <maven-surefire-report-plugin.version>3.0.0-M3</maven-surefire-report-plugin.version>
 
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
-        <dockerfile-maven-plugin.version>1.4.9</dockerfile-maven-plugin.version>
+        <dockerfile-maven-plugin.version>1.4.12</dockerfile-maven-plugin.version>
         <findbugs-maven-plugin.version>3.0.5</findbugs-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
         <tidy-maven-plugin.version>1.1.0</tidy-maven-plugin.version>
