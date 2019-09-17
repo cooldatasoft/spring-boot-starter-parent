@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.org/cooldatasoft/spring-boot-starter-parent.svg?branch=develop)](https://travis-ci.org/cooldatasoft/spring-boot-starter-parent)
-
-
 # How To Use
 
 Declare this pom as the parent pom for your sprinboot project and thats almost everything you need. 
