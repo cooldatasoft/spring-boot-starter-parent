@@ -91,7 +91,7 @@
         <!--********* Plugin Versions *********-->
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
         <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
-        <maven-cucumber-reporting.version>4.7.0</maven-cucumber-reporting.version>
+        <maven-cucumber-reporting.version>4.9.0</maven-cucumber-reporting.version>
         <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
         <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
         <maven-failsafe-plugin.version>3.0.0-M3</maven-failsafe-plugin.version>
