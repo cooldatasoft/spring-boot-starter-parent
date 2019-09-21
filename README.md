@@ -6,7 +6,7 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
         <parent>
             <groupId>com.cooldatasoft</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.1.7.1.RELEASE</version>
+            <version>2.1.8.1.RELEASE</version>
         </parent>
         
         
