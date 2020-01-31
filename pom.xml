@@ -71,7 +71,7 @@
         <checkstyle.failsOnError>true</checkstyle.failsOnError>
         <checkstyle.includeTestSourceDirectory>true</checkstyle.includeTestSourceDirectory>
         <checkstyle.suppressions.location>checkstyle/checkstyle-suppressions.xml</checkstyle.suppressions.location>
-        <checkstyle.version>8.26</checkstyle.version>
+        <checkstyle.version>8.29</checkstyle.version>
 
 
         <!-- PMD Settings -->
