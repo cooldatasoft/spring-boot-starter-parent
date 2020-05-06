@@ -6,10 +6,19 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
         <parent>
             <groupId>com.cooldatasoft</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.2.2.RELEASE</version>
+            <version>2.2.3.RELEASE</version>
         </parent>
         
+ 
+ # Check Latest Dependency Version
+ 
+     mvn versions:display-dependency-updates
+
+# Release
         
+    mvn -DperformRelease=true clean compile deploy
+        
+               
 ##Automatically Configured plugins when added to plugins tag in pom.xml
 
 ##### [maven-checkstyle-plugin](https://maven.apache.org/plugins/maven-checkstyle-plugin/index.html)
@@ -44,7 +53,3 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
 
 
 
-# Release
-        
-    mvn -DperformRelease=true clean compile deploy
-        
