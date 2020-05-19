@@ -1,3 +1,11 @@
+# What is it?
+
+This project declares the original spring-boot-starter-parent as its parent and 
+inherits everything from it and add more capabilities to the parent pom.
+
+By using this as the parent pom you will get below plugins setup automcatically for you
+
+
 # How To Use
 
 Declare this pom as the parent pom for your sprinboot project and thats almost everything you need. 
