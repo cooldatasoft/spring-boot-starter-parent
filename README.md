@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.org/cooldatasoft/spring-boot-starter-parent.svg?branch=develop)](https://travis-ci.org/cooldatasoft/spring-boot-starter-parent)
-
-
 # How To Use
 
 Declare this pom as the parent pom for your sprinboot project and thats almost everything you need. 
@@ -9,11 +6,20 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
         <parent>
             <groupId>com.cooldatasoft</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.1.6.RELEASE</version>
+            <version>2.2.7.RELEASE</version>
         </parent>
         
+ 
+ # Check Latest Dependency Version
+ 
+     mvn versions:display-dependency-updates
+
+# Release
         
-##Automatically Added plugins
+    mvn -DperformRelease=true clean compile deploy
+        
+               
+##Automatically Configured plugins when added to plugins tag in pom.xml
 
 ##### [maven-checkstyle-plugin](https://maven.apache.org/plugins/maven-checkstyle-plugin/index.html)
 
@@ -24,11 +30,13 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
  checkstyle.failOnViolation     | true      | Fails build if there are violations
  checkstyle.failsOnError        | true      | Fails build if there are errors
  
+##### [maven-cucumber-reporting](https://github.com/damianszczepanik/maven-cucumber-reporting)
+##### [maven-dependency-plugin](https://maven.apache.org/plugins/maven-dependency-plugin/)
 ##### [maven-enforcer-plugin](https://maven.apache.org/enforcer/maven-enforcer-plugin/)
 ##### [maven-failsafe-plugin](https://maven.apache.org/surefire/maven-failsafe-plugin/)
-##### [maven-gpg-plugin](https://maven.apache.org/plugins/maven-gpg-plugin/)
 ##### [maven-javadoc-plugin](https://maven.apache.org/plugins/maven-javadoc-plugin/)
 ##### [maven-jxr-plugin](https://maven.apache.org/jxr/maven-jxr-plugin/)
+##### [maven-gpg-plugin](https://maven.apache.org/plugins/maven-gpg-plugin/)
 ##### [maven-pmd-plugin](https://maven.apache.org/plugins/maven-pmd-plugin/)
 ##### [maven-project-info-reports-plugin](https://maven.apache.org/plugins/maven-project-info-reports-plugin/)
 ##### [maven-release-plugin](https://maven.apache.org/maven-release/maven-release-plugin/)
@@ -36,6 +44,7 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
 ##### [maven-surefire-plugin](https://maven.apache.org/surefire/maven-surefire-plugin/)
 
 ##### [build-helper-maven-plugin](https://www.mojohaus.org/build-helper-maven-plugin/index.html)
+##### [dockerfile-maven-plugin](https://github.com/spotify/dockerfile-maven)
 ##### [findbugs-maven-plugin](https://gleclaire.github.io/findbugs-maven-plugin/)
 ##### [findbugs-maven-plugin](https://gleclaire.github.io/findbugs-maven-plugin/)
 ##### [jacoco-maven-plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html)
@@ -44,8 +53,3 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
 
 
 
-##Optional plugins that needs to be declared in child pom:
-##### [dockerfile-maven-plugin](https://github.com/spotify/dockerfile-maven)
-##### [maven-cucumber-reporting](https://github.com/damianszczepanik/maven-cucumber-reporting)
-##### [maven-dependency-plugin](https://maven.apache.org/plugins/maven-dependency-plugin/)
-        
