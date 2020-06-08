@@ -59,7 +59,7 @@
         <!--********* CHECKSTYLE Rules *********-->
         <build-tools.groupId>com.cooldatasoft</build-tools.groupId>
         <build-tools.artifactId>build-tools</build-tools.artifactId>
-        <build-tools.version>1.0.2</build-tools.version>
+        <build-tools.version>1.0.3</build-tools.version>
 
         <!-- CHECKSTYLE settings -->
         <checkstyle.config.location>checkstyle/checkstyle-rules.xml</checkstyle.config.location>
