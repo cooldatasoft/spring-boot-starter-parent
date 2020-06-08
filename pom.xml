@@ -12,7 +12,7 @@
 
     <groupId>com.cooldatasoft</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.0.RELEASE</version>
+    <version>2.3.0.1.RELEASE</version>
     <packaging>pom</packaging>
 
     <description>Parent project for SpringBoot Projects with preconfigured plugins</description>
