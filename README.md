@@ -14,7 +14,7 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
         <parent>
             <groupId>com.cooldatasoft</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.3.4.3.RELEASE</version>
+            <version>2.3.5.RELEASE</version>
         </parent>
         
  
@@ -58,6 +58,5 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
 ##### [jacoco-maven-plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html)
 ##### [spring-boot-maven-plugin](https://docs.spring.io/spring-boot/docs/current/maven-plugin/index.html)
 ##### [tidy-maven-plugin](https://www.mojohaus.org/tidy-maven-plugin/)
-
 
 
