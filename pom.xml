@@ -5,16 +5,19 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.5.RELEASE</version>
+        <version>2.3.6.RELEASE</version>
         <relativePath/>
     </parent>
 
     <groupId>com.cooldatasoft</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.5.4.RELEASE</version>
+    <version>2.3.6.RELEASE</version>
     <packaging>pom</packaging>
 
-    <description>Parent project for SpringBoot Projects with preconfigured plugins</description>
+    <description>
+        Parent project for SpringBoot Projects with preconfigured plugins
+
+    </description>
     <url>https://github.com/cooldatasoft/spring-boot-starter-parent</url>
     <licenses>
         <license>
@@ -406,6 +409,7 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
                     <configuration>
+                        <testFailureIgnore>true</testFailureIgnore>
                         <systemPropertyVariables>
                             <env>test</env>
                         </systemPropertyVariables>
