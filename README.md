@@ -1,3 +1,11 @@
+# What is it?
+
+This project declares the original spring-boot-starter-parent as its parent and 
+inherits everything from it and adds more capabilities to the parent pom.
+
+By using this as the parent pom you will get below plugins setup automcatically for you
+
+
 # How To Use
 
 Declare this pom as the parent pom for your sprinboot project and thats almost everything you need. 
@@ -6,7 +14,7 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
         <parent>
             <groupId>com.cooldatasoft</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.2.7.RELEASE</version>
+            <version>2.4.2</version>
         </parent>
         
  
@@ -50,6 +58,5 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
 ##### [jacoco-maven-plugin](https://www.eclemma.org/jacoco/trunk/doc/maven.html)
 ##### [spring-boot-maven-plugin](https://docs.spring.io/spring-boot/docs/current/maven-plugin/index.html)
 ##### [tidy-maven-plugin](https://www.mojohaus.org/tidy-maven-plugin/)
-
 
 
