@@ -14,7 +14,7 @@ Declare this pom as the parent pom for your sprinboot project and thats almost e
         <parent>
             <groupId>com.cooldatasoft</groupId>
             <artifactId>spring-boot-starter-parent</artifactId>
-            <version>2.5.4</version>
+            <version>2.5.5</version>
         </parent>
         
  
