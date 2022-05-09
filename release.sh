@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-CURRENT_VERSION="2.6.2"
-RELEASE_VERSION="2.6.3"
+CURRENT_VERSION="2.6.3"
+RELEASE_VERSION="2.6.4"
 
 echo "CURRENT DIR : $PWD"
 git checkout develop
@@ -18,7 +18,7 @@ git commit -m "@RELEASE ${RELEASE_VERSION}"
 git push
 
 
-mvn -DperformRelease=true clean compile deploy
+mvn -DperformRelease=true clean install deploy
 rc=$?
 if [ $rc -ne 0 ]; then
   echo 'Release failed to build! Exiting...'
