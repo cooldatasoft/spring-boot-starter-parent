@@ -18,7 +18,7 @@ git commit -m "@RELEASE ${RELEASE_VERSION}"
 git push
 
 
-mvn -DperformRelease=true clean compile deploy
+mvn -DperformRelease=true clean install deploy
 rc=$?
 if [ $rc -ne 0 ]; then
   echo 'Release failed to build! Exiting...'
