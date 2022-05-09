@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-CURRENT_VERSION="2.6.6"
-RELEASE_VERSION="2.5.12"
+CURRENT_VERSION="2.5.12"
+RELEASE_VERSION="2.5.11"
 
 echo "CURRENT DIR : $PWD"
 git checkout develop
