@@ -117,7 +117,7 @@
 
         <jsoup.version>1.15.3</jsoup.version>
         <guava.version>31.1-jre</guava.version>
-        <jackson.version>2.13.4.1</jackson.version>
+        <jackson.version>2.13.4.2</jackson.version>
         <logstash-logback-encoder>6.3</logstash-logback-encoder>
         <logstash-logback-encoder.version>6.3</logstash-logback-encoder.version>
         <spring-cloud.version>2021.0.2</spring-cloud.version>
