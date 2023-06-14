@@ -116,7 +116,7 @@
         <versions-maven-plugin.version>2.8.1</versions-maven-plugin.version>
 
         <jsoup.version>1.15.3</jsoup.version>
-        <guava.version>31.1-jre</guava.version>
+        <guava.version>32.0.0-jre</guava.version>
         <jackson.version>2.13.4.1</jackson.version>
         <logstash-logback-encoder>6.3</logstash-logback-encoder>
         <logstash-logback-encoder.version>6.3</logstash-logback-encoder.version>
